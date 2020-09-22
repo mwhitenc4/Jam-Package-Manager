@@ -41,6 +41,7 @@ namespace JAM_Manager
             if (current != null)
             {
                 lstAllFiles.Items.Clear();
+                current.Files.Sort((x, y) => x.FileName[0] - y.FileName[0]);
                 foreach (FileInfo f in current.Files)
                 {
                     string fullName = f.FileName + "." + f.FileExtension;
