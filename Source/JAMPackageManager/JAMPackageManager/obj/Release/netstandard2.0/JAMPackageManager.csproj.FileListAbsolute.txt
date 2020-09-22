@@ -1,0 +1,9 @@
+C:\Users\xmtaf\source\repos\JAMPackageManager\JAMPackageManager\obj\Release\netstandard2.0\JAMPackageManager.AssemblyInfoInputs.cache
+C:\Users\xmtaf\source\repos\JAMPackageManager\JAMPackageManager\obj\Release\netstandard2.0\JAMPackageManager.AssemblyInfo.cs
+C:\Users\xmtaf\source\repos\JAMPackageManager\JAMPackageManager\obj\Release\netstandard2.0\JAMPackageManager.csproj.CoreCompileInputs.cache
+C:\Users\xmtaf\source\repos\JAMPackageManager\JAMPackageManager\bin\Release\netstandard2.0\JAMPackageManager.deps.json
+C:\Users\xmtaf\source\repos\JAMPackageManager\JAMPackageManager\bin\Release\netstandard2.0\JAMPackageManager.dll
+C:\Users\xmtaf\source\repos\JAMPackageManager\JAMPackageManager\bin\Release\netstandard2.0\JAMPackageManager.pdb
+C:\Users\xmtaf\source\repos\JAMPackageManager\JAMPackageManager\obj\Release\netstandard2.0\JAMPackageManager.dll
+C:\Users\xmtaf\source\repos\JAMPackageManager\JAMPackageManager\obj\Release\netstandard2.0\JAMPackageManager.pdb
+C:\Users\xmtaf\source\repos\JAMPackageManager\JAMPackageManager\obj\Release\netstandard2.0\JAMPackageManager.csprojAssemblyReference.cache

@@ -1,0 +1,33 @@
+﻿<Window x:Class="JAM_Manager.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:JAM_Manager"
+    mc:Ignorable="d"
+    Title="JAM Manager (You can drag and drop files to replace)" Height="450" Width="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="btnOpenFile" Grid.Row="1" Click="btnOpenFile_Click">Open JAM</Button>
+        <Button x:Name="btnExportFile" Grid.Row="1" Grid.Column="1" Click="btnExportFile_Click">Export Selected</Button>
+        <ListView x:Name="lstAllFiles" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" AllowDrop="True" Drop="lstAllFiles_Drop">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Extension" Width="Auto" DisplayMemberBinding="{Binding Extension}"/>
+                    <GridViewColumn Header="File Size" Width="Auto" DisplayMemberBinding="{Binding FileSize}"/>
+                    <GridViewColumn Header="Offset" Width="Auto" DisplayMemberBinding="{Binding Offset}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
