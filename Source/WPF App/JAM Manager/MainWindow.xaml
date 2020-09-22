@@ -15,11 +15,15 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
+        <TextBox x:Name="ftrBox" Grid.Row="1" Grid.Column="3" TextChanged="ftrBox_TextChanged"/>
         <Button x:Name="btnOpenFile" Grid.Row="1" Click="btnOpenFile_Click">Open JAM</Button>
-        <Button x:Name="btnExportFile" Grid.Row="1" Grid.Column="1" Click="btnExportFile_Click">Export Selected</Button>
-        <ListView x:Name="lstAllFiles" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" AllowDrop="True" Drop="lstAllFiles_Drop">
+        <Button x:Name="btnExportFile" Grid.Row="1" Grid.Column="1" Click="btnExportFile_Click">Extract Selected</Button>
+        <Button x:Name="btnExportAll" Grid.Row="1" Grid.Column="2" Click="btnExportAll_Click">Extract All</Button>
+        <ListView x:Name="lstAllFiles" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" AllowDrop="True" Drop="lstAllFiles_Drop">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}"/>

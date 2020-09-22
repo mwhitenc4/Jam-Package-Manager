@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using forms = System.Windows.Forms;
 
 namespace JAM_Manager
 {
@@ -44,8 +45,13 @@ namespace JAM_Manager
                 current.Files.Sort((x, y) => x.FileName[0] - y.FileName[0]);
                 foreach (FileInfo f in current.Files)
                 {
-                    string fullName = f.FileName + "." + f.FileExtension;
-                    lstAllFiles.Items.Add(new ListItem { Name = fullName, Extension = f.FileExtension, FileSize=f.FileSize, Offset = f.FileOffset, File = f });
+                    if (ftrBox.Text == "" || 
+                        f.FileName.ToLower().Contains(ftrBox.Text.ToLower()) ||
+                        f.FileExtension.ToLower().Contains(ftrBox.Text.ToLower()))
+                    {
+                        string fullName = f.FileName + "." + f.FileExtension;
+                        lstAllFiles.Items.Add(new ListItem { Name = fullName, Extension = f.FileExtension, FileSize = f.FileSize, Offset = f.FileOffset, File = f });
+                    }
                 }
             }
         }
@@ -65,17 +71,17 @@ namespace JAM_Manager
             string[] droppedFiles = (string[])e.Data.GetData(DataFormats.FileDrop, false);
 
             // don't ask, I'm tired now
-            if(droppedFiles.Length == 1 && droppedFiles[0].Length >= 4 && droppedFiles[0].Substring(droppedFiles[0].Length-4, 4).ToUpper() == ".JAM")
+            if (droppedFiles.Length == 1 && droppedFiles[0].Length >= 4 && droppedFiles[0].Substring(droppedFiles[0].Length - 4, 4).ToUpper() == ".JAM")
             {
                 current = JAM.Read(droppedFiles[0]);
                 ReloadFile();
                 return;
             }
 
-            foreach(string fileName in droppedFiles)
+            foreach (string fileName in droppedFiles)
             {
                 FileInfo f = current.FindFile(Path.GetFileName(fileName));
-                if(f != null)
+                if (f != null)
                 {
                     f.ReplaceWithFile(fileName);
                 }
@@ -97,6 +103,30 @@ namespace JAM_Manager
                 }
             }
             ReloadFile();
+        }
+
+        private void ftrBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ReloadFile();
+        }
+
+        private void btnExportAll_Click(object sender, RoutedEventArgs e)
+        {
+            // What the fuck microsoft
+            forms.FolderBrowserDialog fd = new forms.FolderBrowserDialog();
+            if (fd.ShowDialog() == forms.DialogResult.OK) {
+                foreach (FileInfo f in current.Files)
+                {
+                    try
+                    {
+                        f.Extract(fd.SelectedPath + "/" + f.FileName + "." + f.FileExtension);
+                    }
+                    catch
+                    {
+                        // I really can't be bothered to find out what this error is, probably relating to JAM folders
+                    }
+                }
+            }
         }
     }
 }
